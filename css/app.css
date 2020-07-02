@@ -193,66 +193,379 @@
     filter: brightness(115%);
 }
 
-
+.slide_input {
+    /* display: none; */
+}
 
 .visual_slide_box {
     
     width: 600px;
     height: 430px;
     overflow: hidden;
+    position: relative;
 }
 
 .img_container {
-    position: relative;
-    display: flex;
-    width: 500%;
-    height: 100%;
-    animation: slide 8s ease-in-out infinite;
-}
-
-.img_container > img {
-    width: 20%;
-    height: 100%;
-    object-fit: cover;
-     
-}
-
-@keyframes slide {
-    0% {
-        left: 0;
-    }
-    20%{
-        left: -100%;
-    }
-    40%{
-        left: -200%;
-    }
-    60%{
-        left: -300%;
-    }
-    80%{
-        left: -400%;
-    }
+   width: 300%;
+   height: 100%;
+   display: flex;
+   justify-content: space-between;
+   position: absolute;
     
 }
 
-
-
-.left_btn {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translate(0 , -50%);
-    cursor: pointer;
+.img_container > img {
+   width: calc(100% / 3);
+   height: 100%;
+   object-fit: cover;
+     
 }
 
-.right_btn {
+label {
     position: absolute;
-    right: 10px;
     top: 50%;
-    transform: translate(0 , -50%);
+    transform: translateY(-50%);
+    font-size: 50px;
     cursor: pointer;
+    
 }
+label.left {
+    left: 20px;
+}
+label.right {
+    right: 20px;
+}
+
+.img_container {
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-delay: calc(-8s + 0.4s);
+}
+
+.slide_active_1:checked ~ .visual_slide_box .img_container {
+    animation-name: slide1;
+}
+.slide_active_2:checked ~ .visual_slide_box .img_container {
+    animation-name: slide2;
+}
+.slide_active_3:checked ~ .visual_slide_box .img_container {
+    animation-name: slide3;
+}
+.slide_active_4:checked ~ .visual_slide_box .img_container {
+    animation-name: slide4;
+}
+
+@keyframes slide1 {
+    0% {
+        left: 0%;
+    }
+    20% {
+        left: 0%;
+    }
+    25% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    50% {
+        left: -200%;
+    }
+    70% {
+        left: -200%;
+    }
+    75% {
+        left: -100%;
+    }
+    95% {
+        left: -100%;
+    }
+    100% {
+        left: 0%;
+    }
+}
+
+@keyframes slide2 {
+    0% {
+        left: -100%;
+    }
+    20% {
+        left: -100%;
+    }
+    25% {
+        left: -200%;
+    }
+    45% {
+        left: -200%;
+    }
+    50% {
+        left: -100%;
+    }
+    70% {
+        left: -100%;
+    }
+    75% {
+        left: -000%;
+    }
+    95% {
+        left: -000%;
+    }
+    100% {
+        left: -100%;
+    }
+}
+
+@keyframes slide3 {
+    0% {
+        left: -200%;
+    }
+    20% {
+        left: -200%;
+    }
+    25% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    50% {
+        left: -000%;
+    }
+    70% {
+        left: -000%;
+    }
+    75% {
+        left: -100%;
+    }
+    95% {
+        left: -100%;
+    }
+    100% {
+        left: -200%;
+    }
+}
+@keyframes slide4 {
+    0% {
+        left: -100%;
+    }
+    20% {
+        left: -100%;
+    }
+    25% {
+        left: -000%;
+    }
+    45% {
+        left: -000%;
+    }
+    50% {
+        left: -100%;
+    }
+    70% {
+        left: -100%;
+    }
+    75% {
+        left: -200%;
+    }
+    95% {
+        left: -200%;
+    }
+    100% {
+        left: -100%;
+    }
+}
+
+.controller label {
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
+.slide_active_1:checked ~ .controller label[data-idx='1'] {
+    animation-name: controller1;
+}
+.slide_active_1:checked ~ .controller label[data-idx='2'] {
+    animation-name: controller2;
+}
+.slide_active_1:checked ~ .controller label[data-idx='3'] {
+    animation-name: controller3;
+}
+.slide_active_1:checked ~ .controller label[data-idx='4'] {
+    animation-name: controller4;
+}
+/* cont2 */
+.slide_active_2:checked ~ .controller label[data-idx='1'] {
+    animation-name: controller4;
+}
+.slide_active_2:checked ~ .controller label[data-idx='2'] {
+    animation-name: controller1;
+}
+.slide_active_2:checked ~ .controller label[data-idx='3'] {
+    animation-name: controller2;
+}
+.slide_active_2:checked ~ .controller label[data-idx='4'] {
+    animation-name: controller3;
+}
+
+/* cont3 */
+.slide_active_3:checked ~ .controller label[data-idx='1'] {
+    animation-name: controller3;
+}
+.slide_active_3:checked ~ .controller label[data-idx='2'] {
+    animation-name: controller4;
+}
+.slide_active_3:checked ~ .controller label[data-idx='3'] {
+    animation-name: controller1;
+}
+.slide_active_3:checked ~ .controller label[data-idx='4'] {
+    animation-name: controller2;
+}
+
+/* cont4 */
+.slide_active_4:checked ~ .controller label[data-idx='1'] {
+    animation-name: controller2;
+}
+.slide_active_4:checked ~ .controller label[data-idx='2'] {
+    animation-name: controller3;
+}
+.slide_active_4:checked ~ .controller label[data-idx='3'] {
+    animation-name: controller4;
+}
+.slide_active_4:checked ~ .controller label[data-idx='4'] {
+    animation-name: controller1;
+}
+
+@keyframes controller1 {
+    0.0% {
+        z-index: 2;
+    }
+    24.9% {
+        z-index: 2;
+    }
+    25.0% {
+        z-index: 0;
+    }
+    49.9% {
+        z-index: 0;
+    }
+    50.0% {
+        z-index: 0;
+    }
+    74.9% {
+        z-index: 0;
+    }
+    75.0% {
+        z-index: 0;
+    }
+    99.9%{
+        z-index: 0;
+    }
+    100% {
+        z-index: 2;
+    }
+}
+
+@keyframes controller2 {
+    0.0% {
+        z-index: 0;
+    }
+    24.9% {
+        z-index: 0;
+    }
+    25.0% {
+        z-index: 2;
+    }
+    49.9% {
+        z-index: 2;
+    }
+    50.0% {
+        z-index: 0;
+    }
+    74.9% {
+        z-index: 0;
+    }
+    75.0% {
+        z-index: 0;
+    }
+    99.9%{
+        z-index: 0;
+    }
+    100% {
+        z-index: 2;
+    }
+}
+
+@keyframes controller3 {
+    0.0% {
+        z-index: 0;
+    }
+    24.9% {
+        z-index: 0;
+    }
+    25.0% {
+        z-index: 0;
+    }
+    49.9% {
+        z-index: 0;
+    }
+    50.0% {
+        z-index: 2;
+    }
+    74.9% {
+        z-index: 2;
+    }
+    75.0% {
+        z-index: 0;
+    }
+    99.9%{
+        z-index: 0;
+    }
+    100% {
+        z-index: 2;
+    }
+}
+
+@keyframes controller4 {
+    0.0% {
+        z-index: 0;
+    }
+    24.9% {
+        z-index: 0;
+    }
+    25.0% {
+        z-index: 0;
+    }
+    49.9% {
+        z-index: 0;
+    }
+    50.0% {
+        z-index: 0;
+    }
+    74.9% {
+        z-index: 0;
+    }
+    75.0% {
+        z-index: 2;
+    }
+    99.9%{
+        z-index: 2;
+    }
+    100% {
+        z-index: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* 그래프 영역 */
 
